@@ -1,0 +1,31 @@
+## Setup
+
+Check if current directory is a git repository (git rev-parse --is-inside-work-tree).
+    If not, initialize one:
+    - Init a git repo
+    - Analyze the project files and create a .gitignore appropriate for the project
+    - Commit changes
+
+Check if there are untracked files or uncommitted changes (git status).
+    - If there are changes related to the plan, commit them and continue.
+    - else print and stop:
+    "Uncommitted changes detected. Please resolve before running the plan:"                         
+    "  git stash        - stash changes for later"
+    "  git commit -am 'save current work' - commit as is"
+    "  git checkout .   - discard changes"
+    Then output <<<KARL:FAILED>>> and stop.
+
+If currently on the default branch (main or master), create a new feature branch
+    from the plan filename {{PLAN_FILE}} (use full file name without path and extension)
+    and switch to it.
+    If already on a feature branch, continue on it.
+
+Add `.karl/` to .gitignore if not already present.
+
+## Signal Completion
+
+Path A - Setup completed successfully:
+- Output: <<<KARL:DONE>>>
+
+Path B - Setup failed (uncommitted changes, git errors, branch creation failed):
+- Output: <<<KARL:FAILED>>>

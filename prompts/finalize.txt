@@ -1,0 +1,34 @@
+Post-completion finalize step.
+
+Determine the default branch by checking which of these exists: main, master, etc.                      
+Use the one that exists as the base for all git diff and git log commands below.
+
+Rebase your commits onto the latest <default-branch> and organize them for merge.
+
+Steps:
+
+1. Fetch latest changes: `git fetch origin`
+
+2. Rebase onto <default-branch>:
+   - Run: `git rebase origin/<default-branch>`
+   - If conflicts occur, resolve them and continue rebase
+   - If rebase fails completely, abort with `git rebase --abort` and report the issue
+
+3. Review commit history:
+   - Run: `git log origin/<default-branch>..HEAD --oneline`
+   - If there are many small fix commits, consider squashing them
+   - Keep meaningful commit boundaries (feature commits separate from fix commits)
+
+4. Optional: Interactive rebase to clean up history:
+   - Only if there are 5+ commits that could be logically combined
+   - Run: `git rebase -i origin/<default-branch>`
+   - Squash related fix commits into their parent feature commits
+   - Reword commit messages if needed for clarity
+
+5. Verify the branch is ready:
+   - Run tests using the project's test command (check CLAUDE.md or plan file {{PLAN_FILE}} for the correct command)
+   - Run linter if applicable
+
+Report what was done. This step is best-effort - if rebase fails, explain why and the branch remains as-is.
+
+OUTPUT FORMAT: No markdown formatting (no **bold**, `code`, # headers). Plain text and - lists are fine.

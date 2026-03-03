@@ -1,0 +1,32 @@
+You are reviewing code on the current feature branch.
+
+First, determine the default branch of this repository.
+
+If a plan file is available, read it to understand the intent behind the changes: {{PLAN_FILE}}
+
+## How to Get the Diff
+
+If there is no previous review context below, this is the first review pass.
+Run `git diff <default-branch>...HEAD` to see all branch changes.
+
+If previous review context is provided, Claude has already addressed some findings.
+Run `git diff` to see only uncommitted changes (Claude's fixes from the previous iteration).
+
+## Review Focus
+
+Analyze for:
+- Bugs and logic errors
+- Security vulnerabilities
+- Race conditions
+- Error handling gaps
+- Code quality issues
+
+Report findings with file:line references. If no issues found, say "NO ISSUES FOUND".
+
+## Previous Review Context
+
+{{REVIEW_CONTEXT}}
+
+If previous context is present, re-evaluate considering {{MODEL_NAME}}'s arguments.
+If {{MODEL_NAME}}'s fixes are correct, acknowledge them.
+If {{MODEL_NAME}}'s arguments are invalid, explain why the issues still exist.
