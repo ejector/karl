@@ -1,11 +1,11 @@
 This project includes third-party code under the following licenses:
 
 ============================================================================
-Files:    agents/documentation.js
-          agents/implementation.js
-          agents/quality.js
-          agents/simplification.js
-          agents/testing.js
+Files:    agents/documentation.txt
+          agents/implementation.txt
+          agents/quality.txt
+          agents/simplification.txt
+          agents/testing.txt
           prompts/*
 Origin:   https://github.com/umputun/ralphex
 Author:   Umputun
